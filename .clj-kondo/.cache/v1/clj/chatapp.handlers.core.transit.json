@@ -1,0 +1,1 @@
+["^ ","~$authenticated?",["^ ","~:row",3,"~:col",1,"~:fixed-arities",["~#set",[1]],"~:name","^0","~:ns","~$chatapp.handlers.core","~:top-ns","^7","~:arities",["^ ","~i1",["^ ","~:ret","~:fn"]]],"~:filename","C:\\wamp64\\www\\clojure\\chatapp\\src\\clj\\chatapp\\handlers\\core.clj"]

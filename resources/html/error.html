@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+		<meta name="Author" content="Spruko Technologies Private Limited">
+		<meta name="Keywords" content="bootstrap admin template, admin template ,admin panel template ,bootstrap 4 admin template ,bootstrap admin ,admin dashboard template ,bootstrap admin panel ,bitcoin dashboard ,crypto dashboard ,btc dashboard ,cryptocurrency dashboard ,bitcoin template ,cryptocurrency template ,crypto template ,cryptocurrency dashboard template ,cryptocurrency admin template ,crypto admin template ,btconline dashboard ,ryptocurrency dashboard template ,crypto admin template ,crypto trading dashboard ,cryptocurrency admin template "/>
+
+		<!-- Title -->
+		<title> Xino -  Premium dashboard ui bootstrap rwd admin html5 template </title>
+
+		<!-- Favicon -->
+		<link rel="icon" href="/assets/img/brand/favicon.png" type="image/x-icon"/>
+
+		<!---Fontawesome css-->
+		<link href="/assets/plugins/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+		<!---Ionicons css-->
+		<link href="/assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+		<!---Typicons css-->
+		<link href="/assets/plugins/typicons.font/typicons.css" rel="stylesheet">
+
+		<!---Feather css-->
+		<link href="/assets/plugins/feather/feather.css" rel="stylesheet">
+
+		<!---Falg-icons css-->
+		<link href="/assets/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+
+		<!---Style css-->
+		<link href="/assets/css/style.css" rel="stylesheet">
+		<link href="/assets/css/style-dark.css" rel="stylesheet">
+
+	</head>
+	<body class="main-body">
+
+		<!-- Loader -->
+		<div id="global-loader" class="light-loader">
+			<img src="/assets/img/loaders/loader.svg" class="loader-img" alt="Loader">
+		</div>
+		<!-- /Loader -->            
+
+		<!-- Main-error-wrapper -->
+		<div class="main-error-wrapper  page page-h ">
+			<h1 class="">{{ status }}<span class="tx-20">error</span></h1>
+            {% if status = 404 %}
+
+			<h2>Oopps. The page you were looking for doesn't exist.</h2>
+			<h6>You may have mistyped the address or the page may have moved.</h6><a class="btn btn-outline-indigo" href="index.html">Back to Home</a>
+			{% endif %}
+
+            {% if status = 406 %}
+             
+			<h2>Oopps. Bad request</h2>
+			<h6>Please make a proper request or go .</h6><a class="btn btn-outline-indigo" href="index.html">Back to Home</a>
+
+			{% endif %}
+
+            {% if status = 500 %}
+ 
+			<h2>Oopps. An internal server error occured.</h2>
+			<h6>{{message}}  </h6><a class="btn btn-outline-indigo" href="index.html">Back to Home</a>
+
+
+            {% endif %}
+		</div>
+		<!-- /Main-error-wrapper -->
+
+		<!-- JQuery min js -->
+		<script src="/assets/plugins/jquery/jquery.min.js"></script>
+
+		<!-- Bootstrap Bundle js -->
+		<script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Ionicons js -->
+		<script src="/assets/plugins/ionicons/ionicons.js"></script>
+
+		<!-- Moment js -->
+		<script src="/assets/plugins/moment/moment.js"></script>
+
+		<!-- eva-icons js -->
+		<script src="/assets/js/eva-icons.min.js"></script>
+
+		<!-- Rating js-->
+		<script src="/assets/plugins/rating/jquery.rating-stars.js"></script>
+		<script src="/assets/plugins/rating/jquery.barrating.js"></script>
+
+		<!-- Custom js -->
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>
