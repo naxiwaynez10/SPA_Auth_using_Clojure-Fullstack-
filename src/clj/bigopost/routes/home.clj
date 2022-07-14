@@ -22,8 +22,8 @@
     ["/api"
     ;; authentications
      ["/get-auth-user" {:post user-data}]
-     
-
+     ["/request/:id/:name" (fn [req]
+                             {:status 200 :body (map (fn [req] (str (key req) "  " (val req))) req)})]
     ;; POSTS
      ["/people/get" {:post get-people}]
      ["/person/get/:id" {:post get-person}]

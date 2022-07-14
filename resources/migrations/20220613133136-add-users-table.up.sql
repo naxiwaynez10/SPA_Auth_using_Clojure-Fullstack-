@@ -7,4 +7,4 @@ CREATE TABLE users
  last_login TIMESTAMP,
 --  is_active BOOLEAN,
 authkey VARCHAR(100) UNIQUE NULL,
- pass VARCHAR(100));
+pass VARCHAR(100));

@@ -11,7 +11,8 @@
 (defn get-people []
   (POST "/api/people/get"
      {:handler (fn [res]
-                (reset! state res))}))
+                ;;  (reset! form {})
+                 (reset! state res))}))
 
 (defn save-person! [params]
   (POST "/api/person/add"
@@ -22,11 +23,19 @@
                       (get-people))))
      :params params}))
 
+
 (defn delete [id]
   (POST (str "/api/person/delete/" id) 
     {:handler (fn [res] 
                 (if (some? (get-in res ["message"])) 
                   (get-people)))}))
+
+(defn get-user!
+  "Get the user by an id for editing"
+[id]
+(POST (str "/api/person/get/" id)
+{:handler (fn [res]
+            (reset! form res))}))
 
 (get-people)
 
@@ -47,6 +56,9 @@
          [:div.main-signin-header
           (if (:response @form) [:div.alert.alert-success (:response @form)])
           [:form
+          (if (:id state)
+            [:input {:type "hidden"
+                   :value (:id state)}])
            [:div.form-group
             [:label "Full name"]
             " "
@@ -59,7 +71,8 @@
            [:div.form-group
             [:label "Role"]
             " "
-            [:select.form-control
+         
+          [:select.form-control
              {:on-change #(swap! form assoc :role (-> % .-target .-value))}
              [:option (:role @form)]
              [:option "Employee"]
@@ -93,7 +106,7 @@
               :type "email"}]
             [:span.text-danger]]
            [:div.form-group
-            [:textarea.form-control {:rows "3" :placeholder "Brief About user" :on-change #(swap! form assoc :about (-> % .-target .-value))} (:about @form)]]]]]]
+            [:textarea.form-control {:rows "3" :placeholder "Brief About user" :on-change #(swap! form assoc :about (-> % .-target .-value))} (str (:about @form))]]]]]]
        [:div.modal-footer
         [:button.btn.ripple.btn-primary {:type "button" :on-click #(save-person! @form)} "Save"]
         [:button.btn.ripple.btn-secondary
@@ -122,7 +135,12 @@
                {:href "#"}
                [:i.fe.fe-message-square.mr-2]
                " Message"]
-              [:a.dropdown-item {:href "#"} [:i.fe.fe-edit-2.mr-2] " Edit"]
+              [:a.dropdown-item 
+               {:data-toggle "modal"
+                :data-target "#modaldemo3"
+                :on-click #(get-user! (:id state))
+                :href "#"} 
+               [:i.fe.fe-edit-2.mr-2] " Edit"]
               [:a.dropdown-item {:href "#"} [:i.fe.fe-eye.mr-2] " View"]
               [:a.dropdown-item
                {:href "#"

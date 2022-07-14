@@ -4,7 +4,6 @@ full_name VARCHAR(100),
 email VARCHAR(100),
 address VARCHAR(100),
 about TEXT,
-role VARCHAR(100),  
 phone VARCHAR(16), 
 added TIMESTAMP  DEFAULT(CURRENT_TIMESTAMP),
 role VARCHAR(100) DEFAULT("Employee"))

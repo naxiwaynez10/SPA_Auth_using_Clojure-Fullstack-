@@ -6,7 +6,6 @@
     [conman.core :as conman]
     [bigopost.config :refer [env]]
     [mount.core :refer [defstate]]))
-
 (defstate ^:dynamic *db*
   :start (if-let [jdbc-url (env :database-url)]
            (conman/connect! {:jdbc-url jdbc-url})

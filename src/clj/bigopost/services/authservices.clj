@@ -33,13 +33,13 @@
   
   (let [[user-exist? _ user] (check-user-details (:params request))]
     (if user-exist?
-      (do   (-> request (assoc-in [:cookies "auth-user"] {:value (-> user :user :id) :secure false :path "/" :http-only true})
+         (-> request (assoc-in [:cookies "auth-user"] {:value (-> user :user :id) :secure false :path "/" :http-only true})
                 (assoc-in [:cookies "auth-id"] {:value (-> user :user :authkey) :secure false :path "/" :http-only true})
-                (assoc :body {"access" false} :headers {"Content-type" "application/json"})))
+                (assoc :body {"access" false} :headers {"Content-type" "application/json"}))
       {:status 200 :headers {"Content-type" "application/json"} :body {"access" true "message" (:message user)}})))
 
 (defn logout
-  "Logout the User in"
+  "Logout the User out"
   [request]
   (-> request (assoc-in [:cookies "auth-user"] {:value "" :max-age -1})
       (assoc-in [:cookies "auth-id"] {:value "" :max-age -1})

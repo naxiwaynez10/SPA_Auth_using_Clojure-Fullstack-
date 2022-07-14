@@ -1,11 +1,20 @@
 (ns bigopost.pages.authpage
-  (:require [ajax.core :refer [POST]]
+  (:require [ajax.core :refer [GET POST]]
             [clojure.string :as str]
             [reagent.core :as r]
             [reitit.frontend.easy :as rfe]))
 
 
 (defonce state (r/atom {}))
+
+(defonce api (r/atom {}))
+
+(defn get-api []
+  (GET "https://jsonplaceholder.typicode.com/todos/"
+  {:handler (fn [res]
+              (reset! api res))}))
+
+(get-api)
 ;; (set! (.-location js/window) "/dashboard")
 (defn login-controller [params]
   (POST "/login"
@@ -43,10 +52,29 @@
 (defn login-page []
 
   [:div.my-auto.page.page-h
+
+       [:table {:class "table"}
+        [:caption "List of users"]
+        [:thead
+         [:tr
+          [:th {:scope "col"} "#"]
+          [:th {:scope "col"} "userId"]
+          [:th {:scope "col"} "Title"]
+          [:th {:scope "col"} "completed?"]]]
+        [:tbody
+
+         (map (fn [item]
+                [:tr
+                 [:th {:scope "row"} (get item "id")]
+                 [:td (get item "userId")]
+                 [:td (get item "title")]
+                 [:td (str (get item "completed"))]]) @api)]]
+
    [:div.main-signin-wrapper
     [:div.main-card-signin.d-md-flex.wd-100p
      [:div.wd-md-50p.login.d-none.d-md-block.page-signin-style.p-5.text-white
       [:div.my-auto.authentication-pages
+   
        [:div
         [:img.m-0.mb-4
          {:alt "logo" :src "/assets/img/brand/logo-white.png"}]

@@ -49,8 +49,8 @@ WHERE id = :id OR email = :id
 -- :name update-person! :! :n
 -- :doc updates an existing user record
 UPDATE people
-SET first_name = :full_name, email = :email, about = :about phone = :phone address = :address role = :role
-WHERE id = :id OR email = :id
+SET full_name = :full_name, email = :email, about = :about, phone = :phone, address = :address 
+WHERE id = :id
 
 -- :name delete-person! :! :n
 -- :doc deletes a user record given the id

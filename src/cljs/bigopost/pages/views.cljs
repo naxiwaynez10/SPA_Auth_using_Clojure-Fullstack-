@@ -20,7 +20,7 @@
        [:div.container-fluid
         [main-header-left]
         [main-header-center]
-        [main-header-right]]]
+        [main-header-right state]]]
       [responsive-header]
       [:div.container-fluid
        [breadcrumb/main]
@@ -30,7 +30,7 @@
 (defn main-panel [state]
   (let [active-route (-> state :match :data :name)]
     (case active-route
-      (or :dashboard-one :dashboard-two) [page state home-page]
+      (or :dashboard-one :dashboard-two) [page state home-page] 
       :about  [page state about-page]
       :login [authpage/login-page]
       :register [authpage/register-page]

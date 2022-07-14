@@ -134,13 +134,13 @@
       {:style {:top "0px" :height "142px"} :tabIndex "0"}]]]
    [:div.dropdown-footer [:a {:href ""} "VIEW ALL"]]])   
 
-(defn profile-dropdown []
+(defn profile-dropdown [state]
   [:div.dropdown-menu.dropdown-menu-arrow.animated.fadeInUp
     [:div.main-header-profile.header-img
      [:div.main-img-user
       [:img {:src "/assets/img/faces/5.jpg", :alt ""}]]
-     [:h6 "Elizabeth Jane"]
-     [:span "Premium Member"]]
+     [:h6 (str (-> state :identity :first_name) " " (-> state :identity :last_name)) ]
+     [:span (str (-> state :identity :authkey ))]]
     [:a.dropdown-item {:href ""} [:i.far.fa-user] " My Profile"]
     [:a.dropdown-item {:href ""} [:i.far.fa-edit] " Edit Profile"]
     [:a.dropdown-item {:href ""} [:i.far.fa-clock] " Activity Logs"]
@@ -155,7 +155,7 @@
      " Sign Out"]])
 
 
-(defn main-header-right []
+(defn main-header-right [state]
   [:div.main-header-right
     [:div.nav.nav-item.navbar-nav-right.ml-auto
      [:form.navbar-form.nav-item.my-auto.d-lg-none
@@ -195,7 +195,7 @@
       [:a.profile-user
        {:href ""}
        [:img {:src "/assets/img/faces/5.jpg" :alt ""}]]
-      [profile-dropdown]]
+      [profile-dropdown state]]
      [:div.dropdown.main-header-message.right-toggle
       [:a.nav-link
        {:data-target ".sidebar-right" :data-toggle "sidebar-right"}

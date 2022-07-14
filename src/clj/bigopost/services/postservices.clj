@@ -5,15 +5,19 @@
   (let [people (db/fetch-people!)]
     {:status 200  :body people}))
 
-(defn get-person [{:keys [params]}]
-  (if-let [person (db/get-person! params)]
+(defn get-person [{{:keys [id]} :path-params}]
+  (if-let [person (db/get-person! {:id id})]
     {:status 200 :body person}
     {:status 200 :body nil}))
 
 (defn add-person [{:keys [params]}]
-  (if (db/add-person! params)
-    {:status 200 :body {"success?" true}}
-    {:status 200 :body {"success?" false}}))
+  (if (:id params)
+    (if (db/update-person! params)
+      {:status 200 :body {"success?" true}}
+      {:status 200 :body {"success?" false}})
+    (if (db/add-person! params)
+      {:status 200 :body {"success?" true}}
+      {:status 200 :body {"success?" false}})))
 
 (defn delete-person [{{:keys [id]} :path-params}]
   (if (db/delete-person! {:id id})
