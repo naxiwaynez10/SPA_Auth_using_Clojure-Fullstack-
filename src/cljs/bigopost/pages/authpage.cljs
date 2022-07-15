@@ -7,14 +7,7 @@
 
 (defonce state (r/atom {}))
 
-(defonce api (r/atom {}))
 
-(defn get-api []
-  (GET "https://jsonplaceholder.typicode.com/todos/"
-  {:handler (fn [res]
-              (reset! api res))}))
-
-(get-api)
 ;; (set! (.-location js/window) "/dashboard")
 (defn login-controller [params]
   (POST "/login"
@@ -53,22 +46,6 @@
 
   [:div.my-auto.page.page-h
 
-       [:table {:class "table"}
-        [:caption "List of users"]
-        [:thead
-         [:tr
-          [:th {:scope "col"} "#"]
-          [:th {:scope "col"} "userId"]
-          [:th {:scope "col"} "Title"]
-          [:th {:scope "col"} "completed?"]]]
-        [:tbody
-
-         (map (fn [item]
-                [:tr
-                 [:th {:scope "row"} (get item "id")]
-                 [:td (get item "userId")]
-                 [:td (get item "title")]
-                 [:td (str (get item "completed"))]]) @api)]]
 
    [:div.main-signin-wrapper
     [:div.main-card-signin.d-md-flex.wd-100p

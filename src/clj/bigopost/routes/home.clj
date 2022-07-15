@@ -37,6 +37,7 @@
                   :post register}]
     
     ["/logout" {:post logout}]
+    ["/todos" home-page]
     ["/dashboard"
      [""
       {:get home-page}]

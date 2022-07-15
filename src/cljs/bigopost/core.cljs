@@ -20,6 +20,7 @@
   (rf/router
    [["/login" {:name :login}]
     ["/register" {:name :register}]
+    ["/todos" {:name :todos}]
     ["/dashboard"
      [""
       {:name :dashboard-one

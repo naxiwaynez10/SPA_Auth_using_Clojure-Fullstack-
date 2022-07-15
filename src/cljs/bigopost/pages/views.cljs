@@ -8,6 +8,7 @@
             [bigopost.pages.aboutpage :refer [about-page]]
             [bigopost.pages.authpage :as authpage]
             [bigopost.pages.homepage :refer [home-page]]
+            [bigopost.pages.todos :as todos]
             [fipp.edn :as fedn]))
 
 (defn page [state view]
@@ -34,5 +35,6 @@
       :about  [page state about-page]
       :login [authpage/login-page]
       :register [authpage/register-page]
+      :todos [todos/todos]
       [:pre (with-out-str (fedn/pprint active-route))])))
 

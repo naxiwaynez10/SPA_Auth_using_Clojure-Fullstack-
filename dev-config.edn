@@ -5,7 +5,7 @@
 {:dev true
  :port 4000
  ;; when :nrepl-port is set the application starts the nREPL server on load
- :nrepl-port 7002
+ :nrepl-port 7008
  
  ; set your dev database connection URL here
  :database-url "mysql://localhost/postdb?user=root&password=naxibraxy&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
